@@ -10,18 +10,29 @@
         <template id="barcode_scanner" name="Barcode Scanner">
           <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
-                <h2>Escanée un Código de Barras para ver la información del producto</h2>
-                <form id="target" method="post" class="o_wsale_products_searchbar_form w-100 w-md-auto mt-2" action="/get_product_barcode">
+             <div class="container">
+              <div class="row mt-2">
+                <div class="col-12">
+                  <h6 class="w-100">Escanée un Código de Barras para ver la información del producto</h6>
+                </div>
+
+                <div class="col-12">
+                <form id="target" method="get" class="o_wsale_products_searchbar_form w-100 w-md-auto mt-2" action="/get_product_barcode">
                     <div role="search" class="input-group">
-                    <input type="search" name="search" class="search-query form-control oe_search_box" placeholder="Buscar…" value="" autocomplete="off" />
-                    <div class="input-group-append" />
-                    <button type="submit" class="btn btn-primary oe_search_button" aria-label="Búsqueda" title="Búsqueda"><i class="fa fa-search"></i></button>
-                    </div>
+                      <input autofocus="autofocus" type="search" name="search" class="search-query form-control oe_search_box" placeholder="Buscar…" value="" autocomplete="off" />
+                      <div class="input-group-append" />
+                      <button type="submit" class="btn btn-primary oe_search_button" aria-label="Búsqueda" title="Búsqueda"><i class="fa fa-search"></i></button>
                     </div>
                 </form>
-
-                <div id="barcode_scanner">
                 </div>
+
+                <div class="col-12 mt-2" t-if="product" id="barcode_scanner">
+                    <h4 class="text-center w-100"><t t-esc="product.name" /></h4>
+                    <h2 class="text-center w-100"><t t-esc="combination['price']" t-options="{'widget': 'monetary', 'display_currency': pricelist.currency_id}" /></h2>
+                    <img style="display:block;margin:0 auto;" t-att-src="'data:image/png;base64,%s' % to_text(product.image_1920)" />
+                </div>
+              </div>
+             </div>
             </div>
           </t>
         </template>
