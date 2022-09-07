@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <template id="assets_frontend" inherit_id="website.assets_frontend" name="CTMIL Website">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/ctmil_website/static/src/css/style.css" />
+                <script src="/website_barcode_scanner/static/src/js/barcode.js"></script>
+            </xpath>
+        </template>
+
+        <template id="barcode_scanner" name="Barcode Scanner">
+          <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <h2>Escanée un Código de Barras para ver la información del producto</h2>
+                <form id="target" method="post" class="o_wsale_products_searchbar_form w-100 w-md-auto mt-2" action="/get_product_barcode">
+                    <div role="search" class="input-group">
+                    <input type="search" name="search" class="search-query form-control oe_search_box" placeholder="Buscar…" value="" autocomplete="off" />
+                    <div class="input-group-append" />
+                    <button type="submit" class="btn btn-primary oe_search_button" aria-label="Búsqueda" title="Búsqueda"><i class="fa fa-search"></i></button>
+                    </div>
+                    </div>
+                </form>
+
+                <div id="barcode_scanner">
+                </div>
+            </div>
+          </t>
+        </template>
+    </data>
+</odoo>
