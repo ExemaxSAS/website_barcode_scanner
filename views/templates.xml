@@ -1,11 +1,5 @@
 <odoo>
     <data>
-        <template id="assets_frontend" inherit_id="website.assets_frontend" name="CTMIL Website">
-            <xpath expr="." position="inside">
-                <script src="/website_barcode_scanner/static/src/js/barcode.js"></script>
-            </xpath>
-        </template>
-
         <template id="barcode_scanner" name="Barcode Scanner">
           <t t-call="website.layout">
             <div id="wrap" class="oe_structure oe_empty">
@@ -29,6 +23,10 @@
                     <h4 class="text-center w-100"><t t-esc="product.name" /></h4>
                     <h2 class="text-center w-100"><t t-esc="combination['price']" t-options="{'widget': 'monetary', 'display_currency': pricelist.currency_id}" /></h2>
                     <img t-if="product.image_512" style="display:block;margin:0 auto;" t-att-src="'data:image/png;base64,%s' % to_text(product.image_512)" />
+                </div>
+
+                <div class="col-12 mt-2 text-center" t-if="notP">
+                   <h2>Producto no Encontrado</h2>
                 </div>
               </div>
              </div>
